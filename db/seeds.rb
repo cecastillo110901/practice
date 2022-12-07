@@ -15,3 +15,8 @@ g3 = Grade.create(student_id: "102125", student_name: "Rafael Mendes", student_g
 g4 = Grade.create(student_id: "102126", student_name: "Emmett Tomai", student_grade: 90)
 g5 = Grade.create(student_id: "102127", student_name: "Robert Schweller", student_grade: 90)
 g6 = Grade.create(student_id: "102128", student_name: "Tim Wylie", student_grade: 90)
+
+teacherID = 1;
+
+taID = 0; 
+
