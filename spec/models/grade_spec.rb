@@ -20,6 +20,10 @@ RSpec.describe Grade, type: :model do
     grade = Grade.new(student_id: "12345", student_name: "Bobby Flay", student_grade: 100)
     expect(grade).to be_valid
   end
+  it "is valid when given a valid student id, valid student name, and valid grade" do
+    grade = Grade.new(student_id: "ABCDE", student_name: "Bobby Flay", student_grade: 100)
+    expect(grade).to be_valid
+  end
 
   it "requires the grade to be greater than or equal to 0" do
     grade = Grade.new(student_id: "18484", student_name: "Joe Exotic", student_grade: -30)
