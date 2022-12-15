@@ -1,15 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% @grades = Grade.all %>
+
 <h1>Grades</h1>
 
-
-      <% if @filter == "asc" %>
-      <%elsif @filter == "desc" %>
-      <% end %>
-<h2>Sort By:
-      <%= link_to 'Ascending   ', grades_path(student_grade: false)%>
-      <%= link_to 'Descending', grades_path(student_grade: true)%></h2>
-
+<h2>Sort By:</h1>
 <table>
   <thead>
     <tr>
@@ -17,6 +12,9 @@
       <th>Student Name</th>
       <th>Student Grade</th>
       <th colspan="4"></th>
+
+<button class="button button1">Ascending</button>
+<button class="button button1">Descending</button>
     </tr>
   </thead>
 
