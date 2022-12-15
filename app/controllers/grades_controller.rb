@@ -6,7 +6,7 @@ class GradesController < ApplicationController
     if !user_signed_in?
       redirect_to user_session_path
     end
-    @grades = grades.all
+    @grades = Grade.all
   end
 
   # GET /grades/1
