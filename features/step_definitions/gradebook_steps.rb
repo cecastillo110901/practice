@@ -26,7 +26,7 @@ When("I click {string}") do |string|
 end
 
 When("I fill out the form and submit") do
-    fill_in "grade_student_id", with: "123456"
+    fill_in "grade_student_id", with: "12345"
     fill_in "grade_student_name", with: "Bob Dylan"
     fill_in "grade_student_grade", with: 80
     click_on "Create Grade"
