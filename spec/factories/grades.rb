@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :grade do
-    sequence(:student_id){ |n| "#{n}#{n}#{n}#{n}#{n}"}
+
+    sequence(:student_id) {[*'A'..'Z', *0..9].sample(5).join}
     sequence(:student_name) { |n| "Student #{n}" }
 
     trait :valid do
