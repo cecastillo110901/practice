@@ -1,12 +1,21 @@
 class GradesController < ApplicationController
   before_action :set_grade, only: [:show, :edit, :update, :destroy]
 
+
+ 
   # GET /grades
   def index
     if !user_signed_in?
       redirect_to user_session_path
     end
     @grades = Grade.all
+    if params[:student_grade] == "true"
+      @grades = Grade.order('student_grade DESC')
+      @filter = "DESC"
+    elsif params[:student_grade] == "false"
+      @grades = @grades = Grade.order('student_grade')
+      @filter = "ASC"
+    end
   end
 
   # GET /grades/1
@@ -20,8 +29,10 @@ class GradesController < ApplicationController
   def new
     if !user_signed_in?
       redirect_to user_session_path
+    
+    else 
+      @grade = Grade.new
     end
-    @grade = Grade.new
   end
 
   # GET /grades/1/edit
