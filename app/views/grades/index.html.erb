@@ -3,6 +3,13 @@
 <h1>Grades</h1>
 
 
+      <% if @filter == "asc" %>
+      <%elsif @filter == "desc" %>
+      <% end %>
+<h2>Sort By:
+      <%= link_to 'Ascending   ', grades_path(student_grade: false)%>
+      <%= link_to 'Descending', grades_path(student_grade: true)%></h2>
+
 <table>
   <thead>
     <tr>
