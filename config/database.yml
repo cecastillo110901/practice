@@ -84,7 +84,7 @@ production:
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: mysite_92ah # CHANGE THIS TO YOUR OWN DATABASE NAME IN RENDER
-  username: mysite # CHANGE THIS TO YOUR OWN DATABASE USERNAME IN RENDER
+  database: mysite_cc2001 # CHANGE THIS TO YOUR OWN DATABASE NAME IN RENDER
+  username: cecastillo # CHANGE THIS TO YOUR OWN DATABASE USERNAME IN RENDER
   password: <%= ENV['MYSITE_DATABASE_PASSWORD'] %>
   url: <%= ENV['DATABASE_URL'] %>
