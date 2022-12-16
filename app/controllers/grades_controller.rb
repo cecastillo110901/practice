@@ -46,24 +46,22 @@ class GradesController < ApplicationController
   def create
     if !user_signed_in?
       redirect_to user_session_path
-    end
+    elsif current_user.account_id == 1 or 
+      current_user.account_id == 0
     @grade = Grade.new(grade_params)
-
     if @grade.save
-      if !user_signed_in?
-        redirect_to user_session_path
-      end
       redirect_to @grade, notice: 'Grade was successfully created.'
     else
       render :new
     end
+    else
+      redirect_to grades_url, notice: 'User is not authorized.' 
+    end
   end
+
 
   # PATCH/PUT /grades/1
   def update
-    if !user_signed_in?
-      redirect_to user_session_path
-    end
     if @grade.update(grade_params)
       redirect_to @grade, notice: 'Grade was successfully updated.'
     else
@@ -73,27 +71,34 @@ class GradesController < ApplicationController
 
   # DELETE /grades/1
   def destroy
-    if !user_signed_in?
-      redirect_to user_session_path
-    end
-    @grade.destroy
-    redirect_to grades_url, notice: 'Grade was successfully destroyed.'
+
+      if !user_signed_in?
+        redirect_to user_session_path
+
+
+      elsif  current_user.teacher?
+        @grade.destroy
+        redirect_to grades_url, notice: 'Grade was successfully destroyed.'
+      
+
+      elsif current_user.ta?
+
+        redirect_to grades_url, notice: 'ACCESS DENIED'    
+
+      end
+
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_grade
-      if !user_signed_in?
-        redirect_to user_session_path
+  
+ private
+ 
+  # Use callbacks to share common setup or constraints between actions.
+      def set_grade
+        @grade = Grade.find(params[:id])
       end
-      @grade = Grade.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def grade_params
-      if !user_signed_in?
-        redirect_to user_session_path
-      end
+  # Only allow a list of trusted parameters through.
+     def grade_params
       params.require(:grade).permit(:student_id, :student_name, :student_grade)
-    end
-end
+   end
+ end
