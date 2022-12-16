@@ -1,0 +1,7 @@
+Feature: update grade 
+  Scenario: signed in as Teacher or TA and update the grade
+    Given there are grades in the gradebook
+    And I sign in as teacher or TA
+    When I click update grade
+    And I update the grade
+    Then the grade should be updated 
