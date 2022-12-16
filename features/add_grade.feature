@@ -1,5 +1,5 @@
-Feature: Add Grade
-    Scenario: signed in and adding a grade
+Feature: Add Grade for teachers and TA
+    Scenario: signed in as a teacher or TA and adding a grade
         Given there are grades in the gradebook
         And I sign in
         When I visit the homepage
